@@ -8,8 +8,8 @@ from config import Z_DIM, DEVICE
 device = torch.device(DEVICE if torch.cuda.is_available() else "cpu")
 
 # ---------------- CONFIG ----------------
-CHECKPOINT_DIR = "wgan_with_bc_loss/checkpoints"
-OUTPUT_DIR = "wgan_with_bc_loss/epoch_samples"
+CHECKPOINT_DIR = "wgan/checkpoints"
+OUTPUT_DIR = "wgan/epoch_samples"
 CHECKPOINT_INTERVAL = 200      # must match training
 START_EPOCH = 0
 END_EPOCH = 3000               # inclusive
