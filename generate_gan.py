@@ -1,11 +1,11 @@
 import torch
-from gan_modified import Generator
+from dcgan import Generator
 import os
 from torchvision.utils import save_image
 
 Z_DIM = 100
 NUM_SAMPLES = 100
-BEST_EPOCH = 250  # <<< choose based on visual + seam tradeoff
+BEST_EPOCH = 450  # <<< choose based on visual + seam tradeoff
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -13,14 +13,14 @@ G = Generator(Z_DIM).to(device)
 
 G.load_state_dict(
     torch.load(
-        f"outputs/gan/checkpoints_gan_modified/generator_epoch_{BEST_EPOCH}.pth",
+        f"outputs/dcgan/checkpoints_dcgan/generator_epoch_{BEST_EPOCH}.pth",
         map_location=device
     )
 )
 
 G.eval()
 
-OUT_DIR = "outputs/gan/final_samples_250_gan_modified"
+OUT_DIR = f"outputs/dcgan/final_samples_{BEST_EPOCH}"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 with torch.no_grad():

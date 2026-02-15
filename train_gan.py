@@ -5,9 +5,9 @@ from torch.utils.data import DataLoader
 import os
 
 from dataset import TileDataset
-from gan_modified import Generator, Discriminator
+from dcgan import Generator, Discriminator
 
-CKPT_DIR = "outputs/gan/checkpoints_gan_modified"
+CKPT_DIR = "outputs/dcgan/checkpoints_dcgan"
 os.makedirs(CKPT_DIR, exist_ok=True)
 def seam_loss(img):
     """
@@ -22,7 +22,7 @@ def seam_loss(img):
 
 
 DATA_DIR = "Textures/floor/seamless_tiles_32"
-OUT_DIR = "outputs/gan/samples_gan_modified"
+OUT_DIR = "outputs/dcgan/samples_dcgan"
 
 BATCH_SIZE = 8
 EPOCHS = 500
@@ -95,5 +95,5 @@ for epoch in range(EPOCHS):
     )
 
 
-torch.save(G.state_dict(), "outputs/gan/generator.pth")
+torch.save(G.state_dict(), "outputs/dcgan/generator.pth")
 print("GAN training complete.")
